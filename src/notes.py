@@ -31,16 +31,17 @@ class Notes:
     def add_note(self):
         #ensures the data folder exists
         while True:
+            print(("enter e to exit"))
             notename = input("enter the name of your note").title().strip()
-            note_input = input("enter your note ").strip()
-            input_note = get_checker(note_input)
-            if input_note is None:
+            input_notename = get_checker(notename)
+            if input_notename is None:
                 print("exiting...")
                 return
+            note_input = input("enter your note ").strip()
             timestamp = datetime.now().strftime("%y-%m-%d %H:%M:%S")
             self.note.append({
-                "taskname": notename,
-                "note": input_note,
+                "taskname": input_notename,
+                "note": note_input,
                 "save_time": timestamp
             })
             self.save_notes()#save instantly
@@ -52,3 +53,34 @@ class Notes:
         else:
             print("no data found")
     def delete_note(self):
+        print("e to exit")
+        self.show_stored()
+        while True:
+            try:
+                line = input("enter the no. of line you want to delete")
+                n = get_checker(line)
+                if n is None:
+                    print("exiting")
+                    return
+                elif n <= 0 or n > len(self.note):
+                    print("number is either 0 or greater than no. of notes in file")
+                    continue
+            except ValueError or TypeError:
+                print("enter a valid digit")
+            n = int(n)
+            deleted = self.note.pop(line-1)
+            self.save_notes()# didnt used del so we can print 
+            print(f"deleted note:{deleted}")
+    def delete_all_data(self):
+        try:
+            regulator = input("Type yes/No if you want to delete whole data\n⚠️your choices may have consequences").lower()
+        except TypeError:
+            print("write carefully ")
+        if regulator == "yes":
+            self.note.clear()
+            self.save_notes()
+            print("all data deleted succesfully")
+        else:
+            print("something went wrong try again later")
+
+            
