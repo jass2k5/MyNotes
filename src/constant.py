@@ -1,12 +1,9 @@
 class Constants:
-    def __init__(self,filename,taskname,notes):
+    def __init__(self,filename,taskname):
         self.filename = filename
         self.taskname = taskname
-        self.notes = notes
     
     def __str__(self):
-        return f"name of task {self.taskname},note:{self.notes},file where the note is saved{self.filename}"
+        return f"name of task {self.taskname},note:{self.note},file where the note is saved{self.filename}"
     
 
-tester = Constants("notes.json","testing","testingnotes")
-print(tester)
