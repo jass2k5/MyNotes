@@ -53,21 +53,20 @@ class Notes:
         else:
             print("no data found")
     def delete_note(self):
-        print("e to exit")
         self.show_stored()
         while True:
+            exit_input = input("enter e to exist")
+            exit = get_checker(exit_input)
+            if exit is None:
+                print("exiting...")
+                return
             try:
-                line = input("enter the no. of line you want to delete")
-                n = get_checker(line)
-                if n is None:
-                    print("exiting")
-                    return
-                elif n <= 0 or n > len(self.note):
+                line = int(input("enter the no. of line you want to delete"))
+                if line <= 0 or line > len(self.note):
                     print("number is either 0 or greater than no. of notes in file")
                     continue
-            except ValueError or TypeError:
+            except (ValueError or TypeError):
                 print("enter a valid digit")
-            n = int(n)
             deleted = self.note.pop(line-1)
             self.save_notes()# didnt used del so we can print 
             print(f"deleted note:{deleted}")

@@ -1,17 +1,12 @@
 [
     {
-        "taskname": "1St",
-        "note": "hi hello",
-        "save_time": "25-08-14 02:16:01"
+        "taskname": "Testnote_1",
+        "note": "first note tested",
+        "save_time": "25-08-14 14:27:52"
     },
     {
-        "taskname": "2Nd",
-        "note": "bye bye",
-        "save_time": "25-08-14 02:16:06"
-    },
-    {
-        "taskname": "3Rd",
-        "note": "hui hui huui",
-        "save_time": "25-08-14 02:16:13"
+        "taskname": "Test_Note_2",
+        "note": "test number 2 worked",
+        "save_time": "25-08-14 14:28:19"
     }
 ]
