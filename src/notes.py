@@ -39,17 +39,19 @@ class Notes:
                 return
             note_input = input("enter your note ").strip()
             timestamp = datetime.now().strftime("%y-%m-%d %H:%M:%S")
+            edit = None
             self.note.append({
                 "taskname": input_notename,
                 "note": note_input,
-                "save_time": timestamp
+                "save_time": timestamp,
+                "edited_on": edit
             })
             self.save_notes()#save instantly
             print(f"note added at {timestamp}")
     def show_stored(self):
         if self.note:
             for idx,line in enumerate(self.note,start = 1):
-                print(f"{idx}:{line['taskname']} {line['note']} (saved on {line['save_time']})")
+                print(f"{idx}:{line['taskname']} {line['note']} (saved on {line['save_time']}) and (edited on {line['edited_on']})")
         else:
             print("no data found")
     def delete_note(self):
@@ -88,10 +90,10 @@ class Notes:
         print("showing all your notes......")
         print(f"there are total of {len(self.note)} notes")
         for idx, note in enumerate(self.note,start = 1):
-            print(f"{idx}:{note['taskname']},{note['note']}, saved at {note['save_time']}")
+            print(f"{idx}:{note['taskname']},{note['note']}, saved at {note['save_time']} edited on {note['edited_on']}")
         while True:
             print("enter e if you want to exit")
-            numberfirst = input("enter the number of note u want to delte")
+            numberfirst = input("enter the number of note u want to edit")
             number = get_checker(numberfirst)
             if number is None:
                 print("exiting....")
@@ -104,11 +106,16 @@ class Notes:
             except (ValueError,TypeError):
                 print("enter a valid number ")
                 continue
-                
-            newvalue = input("edit the note")
-            if newvalue:
-                self.note[number-1]['note'] = newvalue
+
+            newtask = input("edit the taskname\nelse press enter to skip")      
+            newnote = input("edit the note\nelse press enter to skip")
+            if newnote:
+                self.note[number-1]['note'] = newnote
+            if newtask:
+                self.note[number-1]['taskname'] = newtask
+            if newnote or newtask:
+                self.note[number-1]['edited_on'] =  datetime.now().strftime("%y-%m-%d %H:%M:%S")
                 self.save_notes()
-                break
+            break
                 
             
