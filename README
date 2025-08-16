@@ -1,0 +1,68 @@
+# Notebook Project
+
+## What It Is
+
+This is a **simple yet powerful note-taking app** built in Python. You can add, view, edit, and delete notes, and all your notes are saved automatically in a JSON file so you never lose them. Every note also tracks **when it was created** and **when it was last edited**, making it professional and easy to manage.  
+
+---
+
+## Features
+
+- **Add Notes**: Give your task a name, write your note, and it saves with the **creation date and time** automatically using Python’s `datetime` module.  
+- **Edit Notes**: Change the task name or note content. Each edit updates an **“edited on” timestamp**, automatically tracking the modification date and time.  
+- **Delete Notes**: Remove one note or clear all notes safely.  
+- **Persistent Storage**: Notes are stored in `data/notes.json`, ensuring your data persists across sessions.  
+- **Folder Management**: Automatically creates the `data/` folder if it doesn’t exist using Python’s `os` module.  
+- **Smart Input Handling**: Validates user input and allows safe exits using a helper function.  
+- **Clean Code**: Organized using a `Notes` class, separating logic from interaction.  
+- **Future-Ready**: Can be extended to a GUI later with Tkinter, PyQt, or PySide.  
+
+---
+
+## Why It Stands Out for Interviews
+
+- Demonstrates **OOP principles** with classes and methods.  
+- Shows **file and folder management** using `os`.  
+- Handles **data persistence** and **JSON file operations**.  
+- Implements **timestamps for creation and edits** with `datetime`, showing attention to detail.  
+- Robust **input validation** and edge-case handling.  
+- Ready for expansion into GUI or multi-user features.  
+
+---
+
+## How to Use
+
+1. Run the app:
+```bash
+python interaction.py
+Follow the prompts to:
+
+Add a new note (creation time saved automatically)
+
+View all notes, showing created on and edited on timestamps
+
+Edit an existing note (updates the edited on timestamp automatically)
+
+Delete a note or all notes
+
+Future Improvements
+
+Add a GUI interface with Tkinter, PyQt, or PySide.
+
+Search notes by task name or content.
+
+Keep a full edit history for each note.
+
+Export notes to CSV or PDF.
+
+Technologies Used
+
+Python 3.x
+
+os for folder management
+
+datetime for timestamps
+
+JSON for persistent storage
+
+Object-Oriented Programming (classes, methods)
