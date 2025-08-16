@@ -81,5 +81,34 @@ class Notes:
             print("all data deleted succesfully")
         else:
             print("something went wrong try again later")
-
+    def edit_the_note(self):
+        if not self.note:
+            print("no notes yet!")
+            return
+        print("showing all your notes......")
+        print(f"there are total of {len(self.note)} notes")
+        for idx, note in enumerate(self.note,start = 1):
+            print(f"{idx}:{note['taskname']},{note['note']}, saved at {note['save_time']}")
+        while True:
+            print("enter e if you want to exit")
+            numberfirst = input("enter the number of note u want to delte")
+            number = get_checker(numberfirst)
+            if number is None:
+                print("exiting....")
+                return
+            try:
+                number = int(number)
+                if number <= 0 or number > len(self.note):
+                    print("enter a valid number")
+                    continue
+            except (ValueError,TypeError):
+                print("enter a valid number ")
+                continue
+                
+            newvalue = input("edit the note")
+            if newvalue:
+                self.note[number-1]['note'] = newvalue
+                self.save_notes()
+                break
+                
             
